@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $categorias = ['Infantil', 'Adolescente', 'Adulto'];
 
@@ -8,25 +9,24 @@ $idade = (int) $_POST['idade'];
 //var_dump($idade);
 if($nome == null or strlen($nome) < 3 or strlen($nome) > 11)
 {
-    echo 'Nome não permitido. Tente outra vez!';
-    return 0;
+    $_SESSION['erroNome'] = 'Nome não permitido. Tente outra vez!';
+    header('location: form.php');
 }
-else if($idade > 80 or $idade < 5)
+else if($idade > 80 or $idade < 5 or $idade == null)
 {
-    echo 'Idade não permitida';
-    return 0;
+    $_SESSION['erroIdade'] = 'Idade digitada não é válida. Tente outra vez';
+    header('location: form.php');
 }
-else{
     switch($idade){
         case $idade > 5 and $idade < 13:
-            echo "$nome irá competir na categoria $categorias[0]";
+            $_SESSION['sucesso'] = "$nome irá competir na categoria $categorias[0]";
             break;
         case $idade > 12 and $idade < 19:
-            echo "$nome irá competir na categoria $categorias[1]";
+            $_SESSION['sucesso1'] = "$nome irá competir na categoria $categorias[1]";
             break;
         case $idade > 18:
-            echo "$nome irá competir na categoria $categorias[2]";
+            $_SESSION['sucesso2'] = "$nome irá competir na categoria $categorias[2]";
             break;
     }
-}
+
 ?>

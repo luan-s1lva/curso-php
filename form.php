@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -13,6 +16,20 @@
     <h1 class='jumbotron text-center'>FORMULÁRIO DE INSCRIÇÃO</h1>
 
     <form action="natacao.php" method="POST">
+        <?php
+            $erroNome = isset($_SESSION['erroNome']) ? $_SESSION['erroNome'] : '';
+            $erroIdade = isset($_SESSION['erroIdade']) ? $_SESSION['erroIdade'] : '';
+
+            if(!empty($erroNome))
+            {
+                echo $erroNome;
+            }
+            else if(!empty($erroIdade))
+            {
+                echo $erroIdade;
+            }
+        ?>
+        
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" name="nome">
             <label for="floatingInput">Name</label>
@@ -24,7 +41,7 @@
         </div>
         
         <br>
-        
+
         <button type="submit">ENVIAR</button>
     </form>
 </div>
