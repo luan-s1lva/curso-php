@@ -2,8 +2,8 @@
 
 $categorias = ['Infantil', 'Adolescente', 'Adulto'];
 
-$nome = 'Luan';
-$idade = 22;
+$nome = $_POST['nome'];
+$idade = (int) $_POST['idade'];
 
 //var_dump($nome);
 //var_dump($idade);
