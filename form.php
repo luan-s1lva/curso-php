@@ -19,10 +19,15 @@
         <?php
             $erroNome = isset($_SESSION['erroNome']) ? $_SESSION['erroNome'] : '';
             $erroIdade = isset($_SESSION['erroIdade']) ? $_SESSION['erroIdade'] : '';
+            $num = isset($_SESSION['num']) ? $_SESSION['num'] : '';
 
             if(!empty($erroNome))
             {
                 echo $erroNome;
+            }
+            else if(!empty($num))
+            {
+                echo $num;
             }
             else if(!empty($erroIdade))
             {
